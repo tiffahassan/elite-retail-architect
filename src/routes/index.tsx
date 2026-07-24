@@ -79,7 +79,7 @@ const t = {
     },
     salesOverview: "نظرة عامة على المبيعات",
     last12: "آخر ١٢ شهراً",
-    currency: "دولار",
+    currency: "ج.م",
     categoryMix: "توزيع الفئات",
     revenueShare: "حصة الإيرادات",
     categories: ["مستحضرات التجميل", "المكملات الغذائية", "المستلزمات الطبية", "العناية الشخصية"],
@@ -135,7 +135,7 @@ const t = {
     },
     salesOverview: "Sales overview",
     last12: "Last 12 months",
-    currency: "USD",
+    currency: "EGP",
     categoryMix: "Category mix",
     revenueShare: "Revenue share",
     categories: ["Cosmetics", "Supplements", "Medical", "Personal Care"],
@@ -187,12 +187,12 @@ function Dashboard() {
   ];
 
   const kpis = [
-    { label: L.kpis.todaySales, value: "$4,285.60", delta: "+12.4%", icon: DollarSign, tone: "gold" },
-    { label: L.kpis.monthlySales, value: "$128,940", delta: "+8.1%", icon: TrendingUp, tone: "sage" },
-    { label: L.kpis.netProfit, value: "$42,310", delta: "+5.7%", icon: Wallet, tone: "gold" },
+    { label: L.kpis.todaySales, value: "٤٬٢٨٥٫٦٠ ج.م", delta: "+12.4%", icon: DollarSign, tone: "gold" },
+    { label: L.kpis.monthlySales, value: "١٢٨٬٩٤٠ ج.م", delta: "+8.1%", icon: TrendingUp, tone: "sage" },
+    { label: L.kpis.netProfit, value: "٤٢٬٣١٠ ج.م", delta: "+5.7%", icon: Wallet, tone: "gold" },
     { label: L.kpis.lowStock, value: "23", delta: L.kpis.items, icon: AlertTriangle, tone: "warn" },
     { label: L.kpis.expiry, value: "9", delta: L.kpis.within30, icon: CalendarClock, tone: "warn" },
-    { label: L.kpis.cash, value: "$12,540", delta: L.kpis.drawer, icon: Wallet, tone: "sage" },
+    { label: L.kpis.cash, value: "١٢٬٥٤٠ ج.م", delta: L.kpis.drawer, icon: Wallet, tone: "sage" },
   ];
 
   const donut = [
@@ -203,11 +203,11 @@ function Dashboard() {
   ];
 
   const recentSales = [
-    { id: "INV-10241", customer: L.customers[0], items: 4, total: "$186.20", status: "paid" as const },
-    { id: "INV-10240", customer: L.customers[1], items: 2, total: "$54.00", status: "paid" as const },
-    { id: "INV-10239", customer: L.customers[2], items: 7, total: "$312.75", status: "paid" as const },
-    { id: "INV-10238", customer: L.customers[3], items: 1, total: "$24.90", status: "refund" as const },
-    { id: "INV-10237", customer: L.customers[4], items: 3, total: "$98.40", status: "paid" as const },
+    { id: "INV-10241", customer: L.customers[0], items: 4, total: "١٨٦٫٢٠ ج.م", status: "paid" as const },
+    { id: "INV-10240", customer: L.customers[1], items: 2, total: "٥٤٫٠٠ ج.م", status: "paid" as const },
+    { id: "INV-10239", customer: L.customers[2], items: 7, total: "٣١٢٫٧٥ ج.م", status: "paid" as const },
+    { id: "INV-10238", customer: L.customers[3], items: 1, total: "٢٤٫٩٠ ج.م", status: "refund" as const },
+    { id: "INV-10237", customer: L.customers[4], items: 3, total: "٩٨٫٤٠ ج.م", status: "paid" as const },
   ];
 
   const max = Math.max(...chartData);
