@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   TrendingUp,
   DollarSign,
@@ -174,11 +174,16 @@ function Dashboard() {
     document.documentElement.lang = lang;
   }, [dark, isRtl, lang]);
 
-  const navItems = [
-    { icon: LayoutDashboard, label: L.nav.dashboard, active: true },
+  const navItems: Array<{
+    icon: typeof LayoutDashboard;
+    label: string;
+    active?: boolean;
+    to?: string;
+  }> = [
+    { icon: LayoutDashboard, label: L.nav.dashboard, active: true, to: "/" },
     { icon: ShoppingCart, label: L.nav.pos },
     { icon: Boxes, label: L.nav.inventory },
-    { icon: Package, label: L.nav.products },
+    { icon: Package, label: L.nav.products, to: "/products" },
     { icon: Users, label: L.nav.customers },
     { icon: Truck, label: L.nav.suppliers },
     { icon: Receipt, label: L.nav.invoices },
@@ -258,20 +263,29 @@ function Dashboard() {
           </div>
 
           <nav className="flex-1 space-y-1">
-            {navItems.map((n) => (
-              <button
-                key={n.label}
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors text-start"
-                style={{
-                  background: n.active ? "rgba(201,169,107,0.12)" : "transparent",
-                  color: n.active ? "var(--ne-gold)" : "inherit",
-                  fontWeight: n.active ? 600 : 400,
-                }}
-              >
-                <n.icon size={18} />
-                {n.label}
-              </button>
-            ))}
+            {navItems.map((n) => {
+              const cls =
+                "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors text-start";
+              const style = {
+                background: n.active ? "rgba(201,169,107,0.12)" : "transparent",
+                color: n.active ? "var(--ne-gold)" : "inherit",
+                fontWeight: n.active ? 600 : 400,
+              } as const;
+              if (n.to) {
+                return (
+                  <Link key={n.label} to={n.to} className={cls} style={style}>
+                    <n.icon size={18} />
+                    {n.label}
+                  </Link>
+                );
+              }
+              return (
+                <button key={n.label} className={cls} style={style}>
+                  <n.icon size={18} />
+                  {n.label}
+                </button>
+              );
+            })}
           </nav>
 
           <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm opacity-70 hover:opacity-100">
