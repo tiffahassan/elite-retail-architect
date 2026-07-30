@@ -12,4 +12,22 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Pass through additional Vite config to avoid HMR churn from generated files
+  vite: {
+    // Use Vite's native tsconfig paths (recommended over the vite-tsconfig-paths plugin)
+    resolve: {
+      tsconfigPaths: true,
+    },
+    server: {
+      // Ignore changes to generated route tree (or other generated files) so Vite's file watcher
+      // doesn't continuously trigger HMR reloads when those files are regenerated at runtime.
+      watch: {
+        ignored: ["**/src/routeTree.gen.ts", "**/.git/**", "**/node_modules/**"],
+      },
+      // Optional: disable the error overlay if it gets in the way while debugging HMR issues
+      hmr: {
+        overlay: true,
+      },
+    },
+  },
 });
