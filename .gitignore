@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ignore generated route tree and env local file
+src/routeTree.gen.ts
+.env
